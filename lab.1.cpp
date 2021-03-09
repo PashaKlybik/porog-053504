@@ -8,7 +8,6 @@ int main()
 	system("chcp 1251");
 	double number; int temp;
 	printf("Введите вещественное число ",'/n');
-	scanf_s("%lf",&number);
 	do {
 		temp = (int)(scanf_s("%lf", &number));
 		while (getchar() != '\n');
