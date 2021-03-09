@@ -6,7 +6,7 @@
 int main()
 {
 	system("chcp 1251");
-	double number; int temp;
+        long double number; int temp;
 	printf("Введите вещественное число ",'/n');
 	do {
 		temp = (int)(scanf_s("%lf", &number));
