@@ -4,7 +4,7 @@
 
 int fact(int n)
 {
-    if(n==0)
+    if(n == 0)
     {
         return 1;
     }
@@ -14,18 +14,30 @@ int fact(int n)
     }
 }
 
-int rec(float x, float precis)
+float rec(float x, float precis, float orig, int* n)
+{
+    float recs = (float)(pow(-1,*n-1)*pow(x, 2*(*n)-1)/fact(2*(*n)-1));
+    if( fabs(recs) <= precis )
+    {
+        return 0;
+    }
+    (*n)++;
+    return (recs + rec(x, precis, orig, n));
+}
+
+int iter(float x, float precis)
 {
     int counter =0;
     float recs=0, orig=sinf(x);
+
     do
     {
         counter++;
         recs+=pow(-1,counter-1)*pow(x, 2*counter-1)/fact(2*counter-1);
     }
     while (orig-precis>recs || orig+precis<recs);
-    printf_s("Original sin(x): %lf\nTaylor's formula: %lf\n ", orig, recs);
 
+    printf_s("Original sin(x): %lf\n\nTaylor's formula(iter): %lf\n ", orig, recs);
     return counter;
 }
 
@@ -33,8 +45,8 @@ int main()
 {
     _Bool run = 1;
     float precision = 0;
-    int x=20, finish=0, coef=1, numb=0;
-    float radx = 0;
+    int x=20, finish=0, coef=1, numb=0, counter=1;
+    float radx = 0, original=0, newsin=0;
 
     while(run)
     {
@@ -48,17 +60,22 @@ int main()
         }
 
         printf_s("Set precision: ");
-        scanf_s("%f",&precision);
+        scanf_s(" %f",&precision);
 
         radx=(float)x/180*3.14;
-        numb = rec(radx, precision);
+        original = sinf(radx );
+        numb = iter(radx, precision);
 
-        printf_s("Number of calculations: %d\n\n", numb);
+        printf_s("Number of calculations1: %d\n\n", numb);
 
-        printf_s("Continue ?\n Y(1)/N(0)->");
-        scanf_s("%d\n\n", &finish);
+        newsin = rec(radx, precision, original, &counter);
+        printf_s("Taylor's formula(rec): %lf\n ", newsin);
 
-        if(finish==0)
+        printf_s("Number of calculations2: %d\n\n", counter);
+        printf_s("Continue ?\n Y(1)/N(0)-> ");
+        scanf_s(" %d", &finish);
+
+        if(finish == 0)
         {
             run = 0;
         }
