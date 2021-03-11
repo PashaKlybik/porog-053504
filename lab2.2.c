@@ -78,6 +78,7 @@ int main()
         if(finish == 0)
         {
             run = 0;
+
         }
     }
     printf("Thank you!");
