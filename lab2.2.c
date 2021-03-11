@@ -19,6 +19,7 @@ float rec(float x, float precis, float orig, int* n)
     float recs = (float)(pow(-1,*n-1)*pow(x, 2*(*n)-1)/fact(2*(*n)-1));
     if( fabs(recs) <= precis )
     {
+        (*n)--;
         return 0;
     }
     (*n)++;
