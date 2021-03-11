@@ -59,7 +59,6 @@ void area(float a, float b, float c)
 int main() {
     int choice =0;
     _Bool run= 1, triangle=1;
-
     float sideA = 1, sideB = 1, sideC = 1, angle1 = 60, angle2 = 60, angle3 = 60;
 
 
