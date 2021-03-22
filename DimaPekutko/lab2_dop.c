@@ -51,18 +51,18 @@ void iteration(float x, float epsilon) {
     }
 }
 
-void recursive(float x, float epsilon, int n, float sum) {
+float recursive(float x, float epsilon, int n, float sum) {
     float currentVal;
     currentVal = pow((-1), (n-1))*((pow(x, (2*n-1)))/(factorial(2*n-1)));
     sum += currentVal;
 
     if(fabs(sum-(sum-currentVal)) < epsilon) {
         printf("sum=%f, n=%d for x=%f(in rad), epsilon=%f\n", sum, n, x, epsilon);
-        return;
+        return sum;
     }
     else {
          n++;
-         recursive(x, epsilon, n, sum);
+         return recursive(x, epsilon, n, sum);
     } 
 }
 
@@ -83,8 +83,8 @@ int main() {
     printf("\n_____iteration_____\n");
     iteration(x, epsilon);
     printf("\n_____recursive_____\n");
-    recursive(x, epsilon, 1, 0);
-
+    float sum = recursive(x, epsilon, 1, 0);
+    printf("sum=%f", sum);
     return 0;
 }
 
