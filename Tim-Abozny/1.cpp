@@ -32,7 +32,7 @@ int main()
 				{
 					findNumber = (findNumber * 8) + 7;
 				}
-				else if (k == 0)
+				else
 				{
 					findNumber = findNumber * 8;
 				}
