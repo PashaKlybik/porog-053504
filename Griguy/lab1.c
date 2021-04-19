@@ -1,11 +1,11 @@
-//  вариант 5
+//  variant 5
 #include <stdlib.h>
 #include <conio.h>
 
 int main()
 {
-	//вывод чисел со строго монотонной последовательностью цифр
-	int n, ncpy, i, temp;
+	//finding numbers with monotonously changing digits
+int n, ncpy, i, temp;
 	unsigned short count, a[9];
 
 	printf("Enter anything from 1 to 2147483647\n");
