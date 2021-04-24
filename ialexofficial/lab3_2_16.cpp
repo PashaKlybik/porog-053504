@@ -1,5 +1,5 @@
+﻿#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include <stdlib.h>
 
 int** readArray(int m, int n) {
 	int** arr = malloc(sizeof(int*) * m);
@@ -17,6 +17,13 @@ int** readArray(int m, int n) {
 		}
 	}
 	return arr;
+}
+void clearArray(int** arr, int m, int n) {
+	for (int i = 0; i < m; i++)
+	{
+		free(arr[i]);
+	}
+	free(arr);
 }
 
 int main()
@@ -39,6 +46,7 @@ int main()
 				count = 0;
 			if (count == 5) {
 				printf("Won");
+				clearArray(arr, m, n);
 				return 0;
 			}
 		}
@@ -52,6 +60,7 @@ int main()
 				count = 0;
 			if (count == 5) {
 				printf("Won");
+				clearArray(arr, m, n);
 				return 0;
 			}
 		}
@@ -66,6 +75,7 @@ int main()
 				count = 0;
 			if (count == 5) {
 				printf("Won");
+				clearArray(arr, m, n);
 				return 0;
 			}
 		}
@@ -77,6 +87,7 @@ int main()
 				count = 0;
 			if (count == 5) {
 				printf("Won");
+				clearArray(arr, m, n);
 				return 0;
 			}
 		}
@@ -90,6 +101,7 @@ int main()
 				count = 0;
 			if (count == 5) {
 				printf("Won");
+				clearArray(arr, m, n);
 				return 0;
 			}
 		}
@@ -101,10 +113,20 @@ int main()
 				count = 0;
 			if (count == 5) {
 				printf("Won");
+				clearArray(arr, m, n);
 				return 0;
 			}
 		}
 	}
+	/*
+	1 0 0 0 0
+	1 1 0 1 0
+	0 1 1 0 0
+	1 1 0 0 0
+	1 0 0 0 1
+	1 0 0 0 0
+	*/
 	printf("Didn't win");
+	clearArray(arr, m, n);
 	return 0;
 }
