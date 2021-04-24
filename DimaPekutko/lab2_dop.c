@@ -6,19 +6,19 @@
 #define M_PI 3.14159265358979323846
 
 // dop task 2.2.6
-float getFloat()
+float getDouble()
 {
-    float n;
+    long double n;
     char c;
     while(1)
     {
         // scanf will return 2 if the conversion is succesful, i.e.
         // if it could scan first an integer and then a character
-        if (scanf("%f%c", &n, &c) == 2 && c == '\n') return n;
+        if (scanf("%Lf%c", &n, &c) == 2 && c == '\n') return n;
 
         // Conversion failed so flush the input stream
         // Keep reading from input stream until a newline is read
-        float c;
+        long double c;
         do
         {
             if ((c = getchar()) == EOF) exit(1);
@@ -33,17 +33,19 @@ unsigned long factorial(unsigned long f)
     return(f * factorial(f - 1));
 }
 
-void iteration(float x, float epsilon) {
-    float sum = 0;
-    float currentVal;
+void iteration(long double x, long double epsilon) {
+    long double sum = 0;
+    long double currentVal;
+    long double sinx = sinf(x);
+    long double diff;
     int n = 1;
     while(1) {
          currentVal = pow((-1), (n-1))*((pow(x, (2*n-1)))/(factorial(2*n-1)));
          sum += currentVal;
-        //  printf("sum=%f\n", sum);
-         if(fabs(sum-(sum-currentVal)) < epsilon) {
-             printf("sum=%f, n=%d for x=%f(in rad), epsilon=%f\n", sum, n, x, epsilon);
-             return;
+         diff = fabs(sinx-sum);
+         if(diff < epsilon) {
+            printf("sum=%.10Lf, n=%d for sin(x)=%.10Lf (in rad), epsilon=%.10Lf\n", sum, n, sinx, epsilon);
+            return;
          }
          else {
              n++;
@@ -51,13 +53,16 @@ void iteration(float x, float epsilon) {
     }
 }
 
-float recursive(float x, float epsilon, int n, float sum) {
-    float currentVal;
+long double recursive(long double x, long double epsilon, int n, long double sum) {
+    long double currentVal;
+    long double sinx = sinf(x);
+    long double diff;
     currentVal = pow((-1), (n-1))*((pow(x, (2*n-1)))/(factorial(2*n-1)));
     sum += currentVal;
 
-    if(fabs(sum-(sum-currentVal)) < epsilon) {
-        printf("sum=%f, n=%d for x=%f(in rad), epsilon=%f\n", sum, n, x, epsilon);
+    diff = fabs(fabs(sinx)-fabs(sum));
+    if(diff < epsilon) {
+        printf("sum=%.10Lf, n=%d for sin(x)=%.10Lf (in rad), epsilon=%.10Lf\n", sum, n, sinx, epsilon);
         return sum;
     }
     else {
@@ -67,24 +72,25 @@ float recursive(float x, float epsilon, int n, float sum) {
 }
 
 int main() {
-    float x, epsilon, sinx;
+    long double x, epsilon, sinx;
 
     printf("Your x: ");
-    x = getFloat();
+    x = getDouble();
     printf("Your epsiolon: ");
-    epsilon = getFloat();
+    epsilon = getDouble();
     
-    if(x > 180) 
-        x -= 180/(float)(x/180);
-    x = (float)(x/180*3.14);
+    if(x > 180) {
+        x-=(180*(int)(x/180));
+    }
+    x = (long double)x/180*3.14;
     sinx = sinf(x);
 
-    printf("sinx=%f\n", sinx);
+    printf("sinx=%.10Lf\n", sinx);
     printf("\n_____iteration_____\n");
     iteration(x, epsilon);
     printf("\n_____recursive_____\n");
-    float sum = recursive(x, epsilon, 1, 0);
-    printf("sum=%f", sum);
+    double sum = recursive(x, epsilon, 1, 0);
+    printf("sum=%lf\n", sum);
     return 0;
 }
 
