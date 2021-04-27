@@ -18,7 +18,6 @@ int main()
     int n, m;
     printf("Введите размер массива n, m: ");
     scanf_s("%d %d", &n, &m);
-    int* lastRow = (int*)malloc(m * sizeof(int));
     int** mass = (int**)malloc(n * sizeof(int*));
     int** massCopy = (int**)malloc(n * sizeof(int*));
     for (int i = 0; i < n; i++)
@@ -37,10 +36,6 @@ int main()
             else
             {
                 mass[i][k] = rand() % 9 + 1;
-            }
-            if (i == n - 1)
-            {
-                lastRow[k] = mass[i][k];
             }
             massCopy[i][k] = mass[i][k];
             printf("%d  ", mass[i][k]);
@@ -105,6 +100,14 @@ int main()
             }
         }
     }
+    scanf_s("%d",&n);
+    for (int i = 0; i < n; i++)
+    {
+        free(mass[i]);
+        free(massCopy[i]);
+    }
+    free(mass);
+    free(massCopy);
 }
 
 void RowSwap(int** mass, int count, int row1, int row2)
