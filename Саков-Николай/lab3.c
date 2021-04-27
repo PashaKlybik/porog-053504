@@ -100,7 +100,6 @@ int main()
             }
         }
     }
-    scanf_s("%d",&n);
     for (int i = 0; i < n; i++)
     {
         free(mass[i]);
