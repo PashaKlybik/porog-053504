@@ -27,30 +27,48 @@ int main() {
             case 1:
                 printf("\nВведите кол-во килограмм: ");
                 scanf("%f", &kg_t);
-                if (kg_t < 0) {
+                if (kg_t > 0) {
+                    tangerines(TANG_PRICE, kg_t, &cost_t);
+                    break;
+                }
+                else if (kg_t < 0) {
                     printf("\nНекорректный ввод.\n");
                     break;
                 }
-                tangerines(TANG_PRICE, kg_t, &cost_t);
-                break;
+                else {
+                    printf("\nНекорректный ввод.\n");
+                    return 0;
+                }
             case 2:
                 printf("\nВведите кол-во килограмм: ");
                 scanf("%f", &kg_p);
-                if (kg_p < 0) {
+                if (kg_p > 0) {
+                    peaches(PEACHES_PRICE, kg_p, &cost_p);
+                    break;
+                }
+                else if (kg_p < 0) {
                     printf("\nНекорректный ввод.\n");
                     break;
                 }
-                peaches(PEACHES_PRICE, kg_p, &cost_p);
-                break;
+                else {
+                    printf("\nНекорректный ввод.\n");
+                    return 0;
+                }
             case 3:
                 printf("\nВведите кол-во килограмм: ");
                 scanf("%f", &kg_g);
-                if (kg_g < 0) {
+                if (kg_g > 0) {
+                    grapes(GRAPES_PRICE, kg_g, &cost_g);
+                    break;
+                }
+                else if (kg_g < 0) {
                     printf("\nНекорректный ввод.\n");
                     break;
                 }
-                grapes(GRAPES_PRICE, kg_g, &cost_g);
-                break;
+                else {
+                    printf("\nНекорректный ввод.\n");
+                    return 0;
+                }
             case 4:
                 bag(kg_t, kg_p, kg_g);
                 break;
