@@ -6,7 +6,6 @@ void grapes(const float price, float kg, float *cost);
 void bag(float kg_t, float kg_p, float kg_g);
 float summary(float cost_t, float cost_p, float cost_g, float kg_t, float kg_p, float kg_g, float sum_p);
 void info();
-int exit();
 
 int main() {
     float kg_t = 0, kg_p = 0, kg_g = 0, sum_p = 0;
@@ -28,16 +27,28 @@ int main() {
             case 1:
                 printf("\nВведите кол-во килограмм: ");
                 scanf("%f", &kg_t);
+                if (kg_t < 0) {
+                    printf("\nНекорректный ввод.\n");
+                    break;
+                }
                 tangerines(TANG_PRICE, kg_t, &cost_t);
                 break;
             case 2:
                 printf("\nВведите кол-во килограмм: ");
                 scanf("%f", &kg_p);
+                if (kg_p < 0) {
+                    printf("\nНекорректный ввод.\n");
+                    break;
+                }
                 peaches(PEACHES_PRICE, kg_p, &cost_p);
                 break;
             case 3:
                 printf("\nВведите кол-во килограмм: ");
                 scanf("%f", &kg_g);
+                if (kg_g < 0) {
+                    printf("\nНекорректный ввод.\n");
+                    break;
+                }
                 grapes(GRAPES_PRICE, kg_g, &cost_g);
                 break;
             case 4:
@@ -50,7 +61,7 @@ int main() {
                 info();
                 break;
             case 7:
-                exit();
+                return 0;
             default:
                 printf("\n\nНеверный ввод. Попробуйте еще раз.\n\n");
         }
@@ -58,15 +69,22 @@ int main() {
 }
 
 void tangerines(const float price, float kg, float *cost) {
+    if (kg < 0) *cost = 0;
     *cost = price * kg;
 }
 void peaches(const float price, float kg, float *cost) {
+    if (kg < 0) *cost = 0;
     *cost = price * kg;
 }
 void grapes(const float price, float kg, float *cost) {
+    if (kg < 0) *cost = 0;
     *cost = price * kg;
 }
 void bag(float kg_t, float kg_p, float kg_g) {
+    if (kg_t < 0) kg_t = 0;
+    if (kg_p < 0) kg_p = 0;
+    if (kg_g < 0) kg_g = 0;
+
     printf("Мандарины: %fкг\n", kg_t);
     printf("Персики: %fкг\n", kg_p);
     printf("Виноград: %fкг\n\n", kg_g);
@@ -104,7 +122,4 @@ float summary(float cost_t, float cost_p, float cost_g, float kg_t, float kg_p, 
 }
 void info() {
     printf("\nКонтактная информация:\n Магазин - eFruit\n Номер телефона - +375(29)3627233\n");
-}
-int exit() {
-   return 0;
 }
