@@ -1,0 +1,10 @@
+Love u all
+strcpy(ax, dx);
+rrep stosw
+mov     ax, dl
+push    cx
+call .Pointerview
+C++noCyesC++noCyesC++noCyesC++noCyes
+printerrrr
+printerrrr
+printerrrr
