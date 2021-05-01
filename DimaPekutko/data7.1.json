@@ -1,0 +1,64 @@
+{
+	"users": [
+		{
+			"id": 1111,
+			"name": "John",
+			"sex": 1,
+			"birthDate": 1998,
+			"height": 182,
+			"weight": 65,
+			"city": "Minsk",
+			"badHabits": 0,
+			"aboutUser": "love dogs",
+			"partnerReq": "be funny"
+		},
+		{
+			"id": 1112,
+			"name": "Marta",
+			"sex": 2,
+			"birthDate": 1995,
+			"height": 180,
+			"weight": 60,
+			"city": "Minsk",
+			"badHabits": 0,
+			"aboutUser": "love dogs",
+			"partnerReq": "be funny"
+		},
+		{
+			"id": 1113,
+			"name": "Someone",
+			"sex": 1,
+			"birthDate": 1990,
+			"height": 178,
+			"weight": 72,
+			"city": "Gomel",
+			"badHabits": 0,
+			"aboutUser": "love cats",
+			"partnerReq": "be someone"
+		},
+        {
+			"id": 1114,
+			"name": "Jasica",
+			"sex": 2,
+			"birthDate": 1983,
+			"height": 165,
+			"weight": 83,
+			"city": "Brest",
+			"badHabits": 1,
+			"aboutUser": "love dogs",
+			"partnerReq": "be someone"
+		},
+        {
+			"id": 1115,
+			"name": "Garry",
+			"sex": 1,
+			"birthDate": 2000,
+			"height": 193,
+			"weight": 78,
+			"city": "Minsk",
+			"badHabits": 1,
+			"aboutUser": "love cats",
+			"partnerReq": "be someone"
+		}
+	]
+}
