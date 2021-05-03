@@ -15,11 +15,19 @@ int main()
 	}
 
 	for (i = 1; i <= n; i++) {
+		for (j = 0; j < 5*n+2; j++) {
+			putchar('=');
+		}
+		putchar('\n');
+		putchar('|'); putchar('|');
 		for (j = 0; j < n; j++) {
-			printf("%3d", arr[j]++);
+			printf("%3d||", arr[j]++);
 		}
 		arr[n-i] -= n;
 		putchar('\n');
+	}
+	for (j = 0; j < 5*n+2; j++) {
+			putchar('=');
 	}
 
 	free(arr);
