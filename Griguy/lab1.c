@@ -1,11 +1,12 @@
 //  variant 5
 #include <stdlib.h>
 #include <conio.h>
+#include <math.h>
 
 int main()
 {
 	//finding numbers with monotonously changing digits
-int n, ncpy, i, temp;
+	int n, ncpy, i, j, domore;
 	unsigned short count, a[9];
 
 	printf("Enter anything from 1 to 2147483647\n");
@@ -16,64 +17,61 @@ int n, ncpy, i, temp;
 	if (n > 98765432)
 		n = 98765432;
 
-	for (i = 1; i <= n; i++) {
-		temp = i;
+	puts("Goes down");
+	i = 1;
+	while (i <= n) {
 		count = 0;
-
+		j = i;
 		do {
-			a[count] = i % 10;
-			i /= 10;
+			a[count] = j % 10;
+			j /= 10;
 			count++;
-		} while (i);
+		} while (j);
 
-		for (i = 1; i < count; i++) {
-			if (a[i] <= a[i-1]) {
-				i ^= i;
+		domore = 0;
+		for (j = count - 2; j >= 0; j--) {
+			if (a[j] >= a[j+1]) {
+				domore = j + 1;
 				break;
 			}
 		}
 
-		if (i) {
-			printf("%d\n", temp);
-			i = temp;
-			continue ;
+		if (!domore) {
+			printf("%d\n", i);
+			i++;
 		}
-
-		for (i = 1; i < count; i++) {
-			if (a[i] >= a[i-1]) {
-				i ^= i;
-				break;
-			}
+		else {
+			i += (int)pow(10, domore-1) * (10 - a[j+1]);
 		}
-
-		if (i) {
-			printf("%d\n", temp);
-		}
-		i = temp;
 	}
 
-	if(ncpy >= 123456789)
-		printf("%d\n", 123456789);
-	if(ncpy >= 876543210)
-		printf("%d\n", 876543210);
-	if(ncpy >= 976543210)
-		printf("%d\n", 976543210);
-	if(ncpy >= 986543210)
-		printf("%d\n", 986543210);
-	if(ncpy >= 987543210)
-		printf("%d\n", 987543210);
-	if(ncpy >= 987643210)
-		printf("%d\n", 987643210);
-	if(ncpy >= 987653210)
-		printf("%d\n", 987653210);
-	if(ncpy >= 987654210)
-		printf("%d\n", 987654210);
-	if(ncpy >= 987654310)
-		printf("%d\n", 987654310);
-	if(ncpy >= 987654320)
-		printf("%d\n", 987654320);
-	if(ncpy >= 987654321)
-		printf("%d\n", 987654321);
+	puts("Goes up");
+	i = 1;
+	while (i <= n) {
+		count = 0;
+		j = i;
+		do {
+			a[count] = j % 10;
+			j /= 10;
+			count++;
+		} while (j);
+
+		domore = 0;
+		for (j = count - 2; j >= 0; j--) {
+			if (a[j] <= a[j+1]) {
+				domore = j + 1;
+				break;
+			}
+		}
+
+		if (!domore) {
+			printf("%d\n", i);
+			i++;
+		}
+		else {
+			i += (int)pow(10, domore-1) * (a[j+1] - a[j] + 1);
+		}
+	}
 
 	printf("That's all");
 	getchar();
