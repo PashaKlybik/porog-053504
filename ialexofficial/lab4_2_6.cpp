@@ -1,7 +1,7 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
-int strlen(char* str)
+int strlen(unsigned char* str)
 {
 	int res = 0;
 	while (str[res] != '\n' && str[res] != '\0')
@@ -19,7 +19,7 @@ int pow(int base, int exp)
 		res *= base;
 	return res;
 }
-int stoi(char* str)
+int stoi(unsigned char* str)
 {
 	int res = 0, len = strlen(str);
 	for (int i = 0; i < len; i++)
@@ -29,7 +29,7 @@ int stoi(char* str)
 	}
 	return res;
 }
-void moveLetters(char* str, int n)
+void moveLetters(unsigned char* str, int n)
 {
 	for (int i = 0; i < strlen(str); i++)
 	{
@@ -50,7 +50,7 @@ int main()
 {
 	FILE* file = fopen("C:\\Users\\Asus\\Desktop\\input.txt", "r");
 	int n;
-	char str[100];
+	unsigned char str[100];
 	fgets(str, 100, file);
 	n = stoi(str);
 	for (int i = 0; i < n; i++)

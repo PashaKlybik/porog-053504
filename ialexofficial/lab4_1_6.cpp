@@ -11,9 +11,9 @@ int strlen(char* str)
 void concate(char* str1, char* str2)
 {
 	int pos = strlen(str1);
-	str1[pos++] = ' ';
 	for (int i = 0; i < strlen(str2); i++)
 		str1[pos++] = str2[i];
+	str1[pos++] = ' ';
 	str1[pos] = '\0';
 }
 void clearStr(char* str)
@@ -24,8 +24,8 @@ void clearStr(char* str)
 char* getResult(char* str)
 {
 	char prevChar;
-	char* temp = malloc(sizeof(char) * strlen(str));
-	char* res = malloc(sizeof(char) * strlen(str));
+	char* temp = malloc(sizeof(char) * (strlen(str) + 2));
+	char* res = malloc(sizeof(char) * (strlen(str) + 2));
 	int tempPos = 0;
 	int chooseNext = 0;
 	res[0] = temp[0] = '\0';
@@ -34,17 +34,15 @@ char* getResult(char* str)
 	{
 		if (str[i] == ' ')
 		{
-			if (chooseNext) {
-				prevChar = str[i];
-			}
-			else {
+			if (!chooseNext) {
 				temp[tempPos++] = prevChar;
 				temp[tempPos] = '\0';
-				prevChar = str[i];
 				concate(res, temp);
 			}
+			prevChar = str[i];
 			clearStr(temp);
 			tempPos = 0;
+			chooseNext = 0;
 		}
 		else if (str[i] < prevChar)
 		{
