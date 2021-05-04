@@ -61,7 +61,7 @@ char* getResult(char* str)
 			prevChar = str[i];
 		}
 	}
-	if (prevChar != ' ') {
+	if (prevChar != ' ' && !chooseNext) {
 		temp[tempPos++] = prevChar;
 		temp[tempPos] = '\0';
 		concate(res, temp);
@@ -79,6 +79,9 @@ int main()
 	printf("String: ");
 	fgets(str, n, stdin);
 	fgets(str, n, stdin);
-	printf("Result :\n%s", getResult(str));
+	char* res = getResult(str);
+	printf("Result :\n%s", res);
+	free(res);
+	free(str);
 	return 0;
 }
