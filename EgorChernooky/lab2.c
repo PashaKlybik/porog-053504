@@ -103,20 +103,21 @@ void bag(float kg_t, float kg_p, float kg_g) {
     if (kg_p < 0) kg_p = 0;
     if (kg_g < 0) kg_g = 0;
 
-    printf("Мандарины: %fкг\n", kg_t);
-    printf("Персики: %fкг\n", kg_p);
-    printf("Виноград: %fкг\n\n", kg_g);
+    printf("Мандарины: %0.01fкг\n", kg_t);
+    printf("Персики: %0.01fкг\n", kg_p);
+    printf("Виноград: %0.01fкг\n\n", kg_g);
 }
 float summary(float cost_t, float cost_p, float cost_g, float kg_t, float kg_p, float kg_g, float sum_p) {
     sum_p = cost_t + cost_p + cost_g;
-    printf("Стоимость заказа: %f$\n", sum_p);
+    printf("Стоимость заказа: %0.01f$\n", sum_p);
 
     if (sum_p == 0) {
         return 0;
     }
     if(sum_p >= 100) {
         sum_p *= 0.9;
-        printf("\nСтоимость заказа больше 100$, вы получаете скидку 10%!\nТеперь стоимость вашего заказа - %f$!\n", sum_p);
+        printf("\nСтоимость заказа больше 100$, вы получаете скидку 10%!\nТеперь стоимость вашего заказа - %0.01"
+               "f$!\n", sum_p);
     }
 
     float sum_kg = kg_t + kg_p + kg_g;
@@ -136,7 +137,7 @@ float summary(float cost_t, float cost_p, float cost_g, float kg_t, float kg_p, 
             --sum_kg;
         }
     }
-    printf("\nСтоимость заказа вместе с доставкой - %f$\n\n", sum_p);
+    printf("\nСтоимость заказа вместе с доставкой - %0.01f$\n\n", sum_p);
 }
 void info() {
     printf("\nКонтактная информация:\n Магазин - eFruit\n Номер телефона - +375(29)3627233\n");
