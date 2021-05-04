@@ -58,7 +58,7 @@ int main()
 		fgets(str, 100, file);
 		str[strlen(str)] = '\0';
 		printf("%s - ", str);
-		moveLetters(str, i + 2);
+		moveLetters(str, i + 4);
 		printf("%s\n", str);
 	}
 	return 0;
