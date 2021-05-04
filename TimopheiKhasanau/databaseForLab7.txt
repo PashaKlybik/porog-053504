@@ -1,0 +1,44 @@
+'GroupSuicide 1326$ No_add_information
+Shopping 11.10.2017 30.09.2020 0 ,
+Depressing 21.11.2020 01.04.2021 1 ,
+Suicide 03.08.2000 11.09.2001 0 .
+-People:
+Victor ;
+Aleksander ;
+Pavel .
++
+
+'Activizion 20000$ Need_some_hardware
+Planning 05.03.2018 06.05.2019 1 ,
+Designing 21.11.2020 01.04.2021 1 ,
+Maintaining 03.08.1993 11.01.1997 1 .
+-People:
+Timophei ;
+Dmitri ;
+Maxim .
++
+
+'CapCom 14323$ Need_Translator
+RE:Village 03.04.2017 12.03.2021 1 ,
+StreetFighterV 17.05.2016 21.01.2018 1 ,
+MonsterHunter:World 03.08.2015 17.07.2021 1 ,
+MegaMan 12.10.2009 30.02.2012 0 .
+-People:
+HarukaGoro ;
+IsumiKado ;
+NahokoToro ;
+UdoMaevia ;
+TakaTakashi .
++
+
+'Google 1090000$ No_Comments
+Waiting 13.03.2021 20.03.2021 1 ,
+Developing 20.03.2021 01.04.2021 1 ,
+Setting 04.11.1990 01.01.1995 1 .
+-People:
+Timophei ;
+Aleksey ;
+Aleksandra ;
+Maxim ;
+Georgii ;
+Viktor .
