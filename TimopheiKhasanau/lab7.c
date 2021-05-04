@@ -53,7 +53,7 @@ int main() {
     fromFileToList(proj);
     while(run)
     {
-        printf("Make a choice:\n1. Add project\n2. Delete project\n3. Spreadsheet of projects\n4. Full project's editing\n5. More information about project\n6. Load to file\n0. Exit\n");
+        printf("Make a choice:\n1. Add project\n2. Delete project\n3. Spreadsheet of projects\n4. Full project's editing\n5. More information about project\n6. Write to file\n0. Exit\n");
         scanf("%d", &choice);
         switch (choice) {
             case 1:
@@ -165,8 +165,7 @@ void projInfo(struct List *proj, int index)
         {
             proto = proto->pNext;
         }
-        printf("Project-> %s\n", proto->prName);
-        //printf("Resources[ Budjet: %10d%s$ Special comment: %50s]\n", proto->res.budget, proto->res.specComm);
+        printf("Project-> %s Special Comment: %s\n ", proto->prName, proto->res.specComm);
         printf("People amount: %5d\n{\n", proto->peopleSize);
         for(int i =0; i < proto->peopleSize; i++)
         {
