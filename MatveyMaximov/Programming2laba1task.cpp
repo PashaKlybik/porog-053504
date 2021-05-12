@@ -81,6 +81,6 @@ int main()
     if (a == 1) {
         InformationOfTheCreator();
     }
-    getchar();
+    return 0;
 }
 
