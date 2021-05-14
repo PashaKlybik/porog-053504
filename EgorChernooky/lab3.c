@@ -2,20 +2,25 @@
 #include <malloc.h>
 #include <string.h>
 #include <math.h>
-#define MAX_SIZE 512
 
 void encryption (char **array, int size, char *string, char *encryptedString);
 void decryption (char *encryptedString, int size, char **array, char *decryptedString);
 
 int main() {
-    //create a dynamic string
-    char a[MAX_SIZE];                                         //simple array variable for any string
+    //create a string and allocate memory for it
+    char* str, c;
+    int i = 0, j = 1;
+    str = malloc(sizeof(char));
     printf("->");
-    fgets(a, MAX_SIZE, stdin);                                //add text to this variable
-    a[strlen(a)-1] = '\0';                                    //enter is a symbol
+    while (c != '\n') {
+        c = getc(stdin);
+        str = (char*) realloc(str, j * sizeof(char));
+        str[i] = c;
+        j++;
+        i++;
+    }
+    str[strlen(str)-1] = '\0';
     printf("\n");
-    char *str = malloc(sizeof(char) * (strlen(a)));   //allocate memory (length of our array variable)
-    strcpy(str, a);                                           //copy text of array variable into dynamic string
 
     //create a size variable for matrix
     int N = sqrt(strlen(str));
