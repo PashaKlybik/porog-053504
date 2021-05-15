@@ -23,7 +23,6 @@ int myStrlen(char* str) {
 
 int main()
 {
-	setlocale(LC_ALL, "rus");
 	system("color 0D");
 	int intstr;
 	char str[7];
@@ -40,7 +39,7 @@ int main()
 			printf("*");
 			s++;
 		}
-		printf("\nВведите ваше число[100; 9999](введите <m> для выхода их прогаммы) ");
+		printf("\nEnter your number[100; 9999](enter <m> to close program) ");
 		fgets(str, 6, stdin);
 		if (str[0] == 'm') {
 			break;
@@ -48,7 +47,7 @@ int main()
 		intstr = atoi(str);
 		if ((myStrlen(str) > 2) && (myStrlen(str) < 5) && (intstr < 10000) && (intstr > 99)) {
 			intstr = 1;
-			printf("Вы ввели корректное число!\n");
+			printf("Correct number!\n");
 			if (myStrlen(str) == 3) {
 				if (str[0] == '0') {
 					j++;
@@ -87,10 +86,10 @@ int main()
 			}
 			printf("\n");
 			puts(str);
-			printf("Результат: %d\n", res);
+			printf("Result: %d\n", res);
 		}
 		else {
-			printf("Введите корректное число!\n");
+			printf("Enter correct number!\n");
 		}
 		
 	} while (true);
