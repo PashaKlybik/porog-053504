@@ -75,13 +75,13 @@ int main()
             printf("*");
             s++;
         }
-        printf("\n×òî áû âû õîòåëè ñäåëàòü?\n1 - Ââåñòè äàòó \n2 - Âûâåñòè äåíü íåäåëè ââåäåííîé äàòû (è äåíü îò íà÷àëà ãîäà) \n3 - Âûâåñòè êîëè÷åñòâî äíåé îò Ğîæäåíèÿ Õğèñòîâà \n4 - Èíôîğìàöèÿ î âåğñèè è àâòîğå ïğîãğàììû \n5 - Âûéòè");
-        printf("\nÂâîä ");
+        printf("\nWhat would you like to do??\n1 - Enter date \n2 - Display the day of the week of the entered date (the day from the beginning of the year)  \n3 - Display the number of days from the birth of Christ  \n4 - Information about program's version and author \n5 - Exit");
+        printf("\nInput ");
         scanf_s("%c", &input);
         while ((getchar()) != '\n');
         if ((input - 48 >= 1) && (input - 48 <= 5)) {
             if (input == '1') {
-                 printf("\nÂâîä äàòû (â ôîğìàòå ÕÕ.ÕÕ.ÕÕÕÕ(ää.ìì.ãããã)) ");
+                 printf("\nInput date (in format ÕÕ.ÕÕ.ÕÕÕÕ(dd.mm.yyyy)) ");
                  fgets(fulldata, 9, stdin);
                  while ((getchar()) != '\n');
                  day[0] = fulldata[0];
@@ -102,63 +102,63 @@ int main()
                      switch (monthint)
                      {
                      case 1: 
-                         printf("\n%c%c-ãî ßíâàğÿ ", fulldata[0], fulldata[1]);
-                         printf("%c%c%c%cã.\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
+                         printf("\n%c%c January ", fulldata[0], fulldata[1]);
+                         printf("%c%c%c%c\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
                          printf("%c%c.%c%c.%c%c\n", fulldata[0], fulldata[1], fulldata[2], fulldata[3], fulldata[6], fulldata[7]); break;
                      case 2:
                          if ((yearint % 4 == 0 && dayint < 30) || ((yearint % 4 == 1 || yearint % 4 == 2 || yearint % 4 == 3) && dayint < 29)) {
-                             printf("\n%c%c-ãî Ôåâğàëÿ ", fulldata[0], fulldata[1]);
-                             printf("%c%c%c%cã.\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
+                             printf("\n%c%c February ", fulldata[0], fulldata[1]);
+                             printf("%c%c%c%c\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
                              printf("%c%c.%c%c.%c%c\n", fulldata[0], fulldata[1], fulldata[2], fulldata[3], fulldata[6], fulldata[7]);
                          }
-                         else printf("\nÂâåäèòå êîğğåêòíóş äàòó!\n");  break;
+                         else printf("\nEnter correct date!\n");  break;
                      case 3:
-                         printf("\n%c%c-ãî Ìàğòà ", fulldata[0], fulldata[1]);
-                         printf("%c%c%c%cã.\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
+                         printf("\n%c%c March ", fulldata[0], fulldata[1]);
+                         printf("%c%c%c%c\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
                          printf("%c%c.%c%c.%c%c\n", fulldata[0], fulldata[1], fulldata[2], fulldata[3], fulldata[6], fulldata[7]); break;
                      case 4:
                          if (dayint < 31) {
-                             printf("\n%c%c-ãî Àïğåëÿ ", fulldata[0], fulldata[1]);
-                             printf("%c%c%c%cã.\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
+                             printf("\n%c%c April ", fulldata[0], fulldata[1]);
+                             printf("%c%c%c%c\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
                              printf("%c%c.%c%c.%c%c\n", fulldata[0], fulldata[1], fulldata[2], fulldata[3], fulldata[6], fulldata[7]);
-                         }else printf("\nÂâåäèòå êîğğåêòíóş äàòó!\n");  break;
+                         }else printf("\nEnter correct date!\n");  break;
                      case 5:
-                         printf("\n%c%c-ãî Ìàÿ ", fulldata[0], fulldata[1]);
-                         printf("%c%c%c%cã.\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
+                         printf("\n%c%c May ", fulldata[0], fulldata[1]);
+                         printf("%c%c%c%c\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
                          printf("%c%c.%c%c.%c%c\n", fulldata[0], fulldata[1], fulldata[2], fulldata[3], fulldata[6], fulldata[7]); break;
                      case 6:
                          if (dayint < 31) {
-                             printf("\n%c%c-ãî Èşíÿ ", fulldata[0], fulldata[1]);
-                             printf("%c%c%c%cã.\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
+                             printf("\n%c%c June ", fulldata[0], fulldata[1]);
+                             printf("%c%c%c%c\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
                              printf("%c%c.%c%c.%c%c\n", fulldata[0], fulldata[1], fulldata[2], fulldata[3], fulldata[6], fulldata[7]);
-                         } else printf("\nÂâåäèòå êîğğåêòíóş äàòó!\n");  break;
+                         } else printf("\nEnter correct date!\n");  break;
                      case 7:
-                         printf("\n%c%c-ãî Èşëÿ ", fulldata[0], fulldata[1]);
-                         printf("%c%c%c%cã.\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
+                         printf("\n%c%c July ", fulldata[0], fulldata[1]);
+                         printf("%c%c%c%c\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
                          printf("%c%c.%c%c.%c%c\n", fulldata[0], fulldata[1], fulldata[2], fulldata[3], fulldata[6], fulldata[7]); break;
                      case 8:
-                         printf("\n%c%c-ãî Àâãóñòà ", fulldata[0], fulldata[1]);
-                         printf("%c%c%c%cã.\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
+                         printf("\n%c%c August ", fulldata[0], fulldata[1]);
+                         printf("%c%c%c%c\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
                          printf("%c%c.%c%c.%c%c\n", fulldata[0], fulldata[1], fulldata[2], fulldata[3], fulldata[6], fulldata[7]); break;
                      case 9:
                          if (dayint < 31) {
-                             printf("\n%c%c-ãî Ñåíòÿáğÿ ", fulldata[0], fulldata[1]);
-                             printf("%c%c%c%cã.\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
+                             printf("\n%c%c September ", fulldata[0], fulldata[1]);
+                             printf("%c%c%c%c\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
                              printf("%c%c.%c%c.%c%c\n", fulldata[0], fulldata[1], fulldata[2], fulldata[3], fulldata[6], fulldata[7]);
-                         } else printf("\nÂâåäèòå êîğğåêòíóş äàòó!\n");  break;
+                         } else printf("\nEnter correct date!\n");  break;
                      case 10:
-                         printf("\n%c%c-ãî Îêòÿáğÿ ", fulldata[0], fulldata[1]);
-                         printf("%c%c%c%cã.\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
+                         printf("\n%c%c October ", fulldata[0], fulldata[1]);
+                         printf("%c%c%c%c\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
                          printf("%c%c.%c%c.%c%c\n", fulldata[0], fulldata[1], fulldata[2], fulldata[3], fulldata[6], fulldata[7]); break;
                      case 11:
                          if (dayint < 31) {
-                             printf("\n%c%c-ãî Íîÿáğÿ ", fulldata[0], fulldata[1]);
-                             printf("%c%c%c%cã.\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
+                             printf("\n%c%c November ", fulldata[0], fulldata[1]);
+                             printf("%c%c%c%c\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
                              printf("%c%c.%c%c.%c%c\n", fulldata[0], fulldata[1], fulldata[2], fulldata[3], fulldata[6], fulldata[7]);
-                         } else printf("\nÂâåäèòå êîğğåêòíóş äàòó!\n");  break;
+                         } else printf("\nEnter correct date!\n");  break;
                      case 12:
-                         printf("\n%c%c-ãî Äåêàáğÿ ", fulldata[0], fulldata[1]);
-                         printf("%c%c%c%cã.\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
+                         printf("\n%c%c December ", fulldata[0], fulldata[1]);
+                         printf("%c%c%c%c\n", fulldata[4], fulldata[5], fulldata[6], fulldata[7]);
                          printf("%c%c.%c%c.%c%c\n", fulldata[0], fulldata[1], fulldata[2], fulldata[3], fulldata[6], fulldata[7]); break;
                      default:
                          break;
@@ -166,25 +166,25 @@ int main()
                      check++;
                  }
                  else {
-                 printf("\nÂâåäèòå êîğğåêòíóş äàòó!\n");
+                 printf("\nEnter correct date!\n");
                  }    
             }
             if (input == '2') {
                 if (check != 0) {
                     alldays = (yearint / 4) + yearint * 365 + dayint + myallmonth(dayint, yearint, monthint, allmonth);
                     switch (alldays % 7) {
-                    case 5: printf("İòà äàòà - ïîíåäåëüíèê"); break;
-                    case 6: printf("İòà äàòà - âòîğíèê"); break;
-                    case 0: printf("İòà äàòà - ñğåäà"); break;
-                    case 1: printf("İòà äàòà - ÷åòâåğã"); break;
-                    case 2: printf("İòà äàòà - ïÿòíèöà"); break;
-                    case 3: printf("İòà äàòà - ñóááîòà"); break;
-                    case 4: printf("İòà äàòà - âîñêğåñåíüå"); break;
+                    case 5: printf("It's Monday"); break;
+                    case 6: printf("It's Tuesday"); break;
+                    case 0: printf("It's Wednesday"); break;
+                    case 1: printf("It's Thursday"); break;
+                    case 2: printf("it's Friday"); break;
+                    case 3: printf("It's Saturday"); break;
+                    case 4: printf("It's Sunday"); break;
                     }
-                    printf("\nÄåíü ñ íà÷àëà ãîäà: %d\n", myallmonth(dayint, yearint, monthint, allmonth) + dayint);
+                    printf("\nDay from begining of the year: %d\n", myallmonth(dayint, yearint, monthint, allmonth) + dayint);
                 }
                 else {
-                    printf("\nÂâåäèòå äàòó!\n");
+                    printf("\nEnter date!\n");
                 }
             }
             if (input == '4') {
@@ -196,16 +196,16 @@ int main()
             if (input == '3') {
                 if (check != 0) {
                     alldays = (yearint / 4) + yearint * 365 + dayint + myallmonth(dayint, yearint, monthint, allmonth);
-                    printf("\nÎáùåå êîëè÷åñòâî äíåé: %d\n", alldays);
+                    printf("\nTotal number of days : %d\n", alldays);
                 } 
                 else {
-                    printf("\nÂâåäèòå äàòó!\n");
+                    printf("\Enter date!\n");
                 }
             }
             
         }
         else {
-            printf("\nÂâåäèòå êîğğåêòíîå ÷èñëî!\n");
+            printf("\nEnter correct date!\n");
         }
     } while (true);
 
