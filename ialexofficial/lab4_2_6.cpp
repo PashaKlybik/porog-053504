@@ -31,16 +31,17 @@ int stoi(unsigned char* str)
 }
 void moveLetters(unsigned char* str, int n)
 {
+	n = n % ('z' - 'a');
 	for (int i = 0; i < strlen(str); i++)
 	{
 		if (str[i] >= 'A' && str[i] <= 'Z') {
 			str[i] += n;
-			if (str[i] % 'Z' < 'A')
+			if (str[i] % ('Z' + 1) < 'A')
 				str[i] = 'A' + (str[i] % 'Z') - 1;
 		}
 		else if (str[i] >= 'a' && str[i] <= 'z') {
 			str[i] += n;
-			if (str[i] % 'z' < 'a')
+			if (str[i] % ('z' + 1) < 'a')
 				str[i] = 'a' + (str[i] % 'z') - 1;
 		}
 	}
