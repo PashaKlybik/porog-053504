@@ -18,10 +18,12 @@ struct DoublyLinkedList {
 };
 
 void pushToQueue(struct Queue* q, int number);
+int pop(struct Queue* q);
 void pushToList(struct DoublyLinkedList* list, struct Queue* queue1, struct Queue* queue2);
 void sortFromLower(struct DoublyLinkedList* list);
 void sortFromHigher(struct DoublyLinkedList* list);
 void output(struct DoublyLinkedList list);
+void deleteList(struct DoublyLinkedList* list);
 
 int main() {
     //create 2 q objects
@@ -47,6 +49,7 @@ int main() {
     list.rear = list.front = NULL;
     pushToList(&list, &queue1, &queue2);
 
+
     //sort it and output
     sortFromLower(&list);
     printf("\nYour queue in the ascending order: ");
@@ -55,6 +58,9 @@ int main() {
     sortFromHigher(&list);
     printf("\nYour queue in descending order: ");
     output(list);
+
+    //memory cleaning
+    deleteList(&list);
 
     return 0;
 }
@@ -74,24 +80,23 @@ void pushToQueue(struct Queue* q, int number) {
 }
 
 void pushToList(struct DoublyLinkedList* list, struct Queue* queue1, struct Queue* queue2) {
-    struct Node* tmp1 = queue1->front;
-    struct Node* tmp2 = queue2->front;
-
-    while (tmp1 != NULL) {
+    while (queue1->front) {
+        struct Node* tmp = (Node*) malloc(sizeof(Node));
+        tmp->data = pop(&(*queue1));
         if (list->front == NULL && list->rear == NULL) {
-            list->front = list->rear = tmp1;
+            list->front = list->rear = tmp;
         } else {
-            list->rear->next = tmp1;
+            list->rear->next = tmp;
             list->rear->next->prev = list->rear;
-            list->rear = tmp1;
+            list->rear = tmp;
         }
-        tmp1 = tmp1->next;
     }
-    while (tmp2 != NULL) {
-        list->rear->next = tmp2;
+    while (queue2->front) {
+        struct Node* tmp = (Node*) malloc(sizeof(Node));
+        tmp->data = pop(&(*queue2));
+        list->rear->next = tmp;
         list->rear->next->prev = list->rear;
-        list->rear = tmp2;
-        tmp2 = tmp2->next;
+        list->rear = tmp;
     }
 }
 
@@ -138,5 +143,41 @@ void output(struct DoublyLinkedList list) {
     while (tmp != NULL) {
         printf("%d  ", tmp->data);
         tmp = tmp->next;
+    }
+}
+
+int pop(struct Queue* q) {
+    struct Node* tmp = q->front;
+    if (q->front->next == NULL && q->front->prev == NULL) {         //if node is the last
+        int a = tmp->data;
+        q->front = q->rear =  NULL;
+        tmp = NULL;
+        free(tmp);
+        return a;
+    } else {
+        q->front = q->front->next;
+        q->front->prev->next = NULL;
+        q->front->prev = NULL;
+        int a = tmp->data;
+        tmp = NULL;
+        free(tmp);
+        return a;
+    }
+}
+
+void deleteList(struct DoublyLinkedList* list) {
+    while (list->front) {
+        struct Node* tmp = list->front;
+        if (list->front->next == NULL && list->front->prev == NULL) {     //if node is the last
+            list->front = list->rear = NULL;
+            tmp = NULL;
+            free(tmp);
+        } else {
+            list->front = list->front->next;
+            list->front->prev->next = NULL;
+            list->front->prev = NULL;
+            tmp = NULL;
+            free(tmp);
+        }
     }
 }
