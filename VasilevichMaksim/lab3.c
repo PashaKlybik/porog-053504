@@ -91,6 +91,13 @@ int main(void) {
 			printf("Ooooops. System error :)\n");
 		// ----------------------------------------------
 		} while (1);
+
+		for(int i = 0; i < n; i++)
+			free(arr[i]);
+		free(arr);
+		for (int i = 0; i < n; i++)
+			free(bol[i]);
+		free(bol);
 	return 0;
 }
 
