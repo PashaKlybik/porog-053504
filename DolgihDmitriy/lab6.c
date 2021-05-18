@@ -87,6 +87,7 @@ int numNodesHeightK(Item* root, int k) {
 
 void numNodes(Item* root)
 {
+	
 	int k = HeightOfTree(root);
 	for (int i = 0; i < k + 1; i++)
 	{
@@ -94,19 +95,51 @@ void numNodes(Item* root)
 	}
 }
 
+void sortmas(int* mas, int k)
+{
+	int tmp;
+	for(int i=0;i<k;i++)
+	{
+		for(int j=i+1;j<k;j++)
+		{
+			if(mas[j]<mas[i])
+			{
+				tmp = mas[i];
+				mas[i] = mas[j];
+				mas[j] = tmp;
+			
+			}
+		}
+	}
+}
+
+void balanceTree(int* mas,int start,int end,Item **root)
+{
+	int mid = (start + end) / 2;
+	AddNode(mas[mid], &(*root));
+	if (mid > start)
+		balanceTree(mas, start, mid - 1, &(*root)->right);
+		if (mid < end)
+			balanceTree(mas,mid + 1,end,&(*root)->left);	
+}
 int main()
 {
+	int mas[100];
 	char buffer[128];
 	Item *root = NULL;
+
 	FILE *fp = fopen("BinTree.txt", "r"); 
-	 
+	int k = 0;
 	if (!fp) exit(1);
 	while (!feof(fp)) {
 		if (fgets(buffer, 128, fp))
-			if(atoi(buffer)!=0)
-		AddNode(atoi(buffer), &root);
-	 }
-
+			if (atoi(buffer) != 0) {
+				mas[k] = atoi(buffer);
+				k++;
+			}
+	}
+	sortmas(mas, k);
+	balanceTree(mas, 0,k-1, &root);
 	printf("Binary Tree:\n");
 	print(root);
 	numNodes(root);
