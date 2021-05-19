@@ -25,7 +25,7 @@ int main() {
     input(A, B);
     editArrays(A, B);
     output(A, B);
-    delete(A, B);
+    delete(&A, &B);
 
     return 0;
 }
@@ -128,7 +128,7 @@ void editArrays(char** a, char** b) {
         if (counter == Y2) toUpper(&(*b[i]));
     }
 }
-void delete(char** a, char** b) {
+void delete(char*** a, char*** b) {
     for (int i = 0; i < X1; ++i) {
         a[i] = NULL;
         b[i] = NULL;
