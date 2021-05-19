@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/prog_053504.dir/EgorChernooky/4.1/task4_1.c.o CMakeFiles/prog_053504.dir/Tim-Abozny/1.cpp.o -o prog_053504 

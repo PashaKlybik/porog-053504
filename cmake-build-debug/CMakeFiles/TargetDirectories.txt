@@ -1,0 +1,3 @@
+/home/egor/prog-053504/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/egor/prog-053504/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/egor/prog-053504/cmake-build-debug/CMakeFiles/prog_053504.dir
