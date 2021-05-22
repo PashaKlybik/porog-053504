@@ -34,7 +34,7 @@ float funct() {
 }
 //----------------------------------------------------
 int main(void) {
-	char* locale = setlocale(LC_ALL, "Rus");
+	setlocale(LC_ALL, "Rus");
 	char* str = (char*)malloc(BUFFER_SIZE * sizeof(char));
 
 	do {
