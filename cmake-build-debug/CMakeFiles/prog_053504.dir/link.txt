@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/prog_053504.dir/EgorChernooky/main.c.o -o prog_053504 
