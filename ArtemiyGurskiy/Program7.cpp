@@ -117,6 +117,7 @@ int main()
                     break;
 
                 case 5:
+                    system("cls");
                     printf(""); //Help
                     break;
                 }
@@ -158,6 +159,7 @@ int main()
                             break;
 
                         case 3:
+                            system("cls");
                             printf("");//Help
                             break;
                         }
@@ -188,6 +190,7 @@ int main()
                             break;
 
                         case 4:
+                            system("cls");
                             printf("");//Help
                             break;
                         }
@@ -198,6 +201,7 @@ int main()
                     break;
                     
                 case 5:
+                    system("cls");
                     printf("");//Help
                     break;
                 }
@@ -234,6 +238,7 @@ int main()
             break;
 
         case 4:
+            system("cls");
             printf("Добро пожаловать в меню Ломбард_Вещей. Вы выбрали Помощь.\nВ первом пункте меню вы можете просмотреть список клиентов ломбарда, добавить нового клиента ломбарда, удалить клиента ломбарда и редактировать клиента ломбарда.\nВо втором пункте меню вы можете просмотреть список сданных вещей, добавить новую вещь, удалить вещь и редактировать вещь.\nВ третьем пункте меню вы можете просмотреть текущую прибыль ломбарда и оценочная стоимость всех хранимых вещей.\nВы находитесь в четвёртом пункте меню.\nПятый пункт меню предназначен для выхода из программы");//Help
             break;
         }
@@ -297,6 +302,8 @@ void client_addelement_to_list()
     client->prev = temp;
 
     write_client_file();
+    item_addelement_to_list();
+    write_item_file();
 }
 
 void read_client_file()
@@ -886,7 +893,7 @@ void read_item_list()
 {
     system("cls");
     struct item* temp = items_first_element;
-    while (temp->next != NULL)
+    while (temp != NULL)
     {
         printf("%s\n", temp->ID);
         printf("%s\n", temp->Client_ID);
@@ -935,7 +942,6 @@ void delete_item_element(int variant, int int_pawnshop_profit, int int_sum_of_it
     {
         printf("Введите ID вещи, которую надо удалить\n");
         scanf("%d", &check);
-
 
         while (temp != NULL)
         {
