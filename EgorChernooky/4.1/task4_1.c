@@ -131,8 +131,10 @@ void editArrays(char** a, char** b) {
 void delete(char*** a, char*** b) {
     for (int i = 0; i < X1; ++i) {
         a[i] = NULL;
-        b[i] = NULL;
         free(a[i]);
+    }
+    for (int i = 0; i < X2; ++i) {
+        b[i] = NULL;
         free(b[i]);
     }
     a = NULL;
