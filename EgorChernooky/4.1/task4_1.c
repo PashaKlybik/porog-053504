@@ -12,7 +12,7 @@ int size(const char* s);
 void output(char** a, char** b);
 void input(char** a, char** b);
 void editArrays(char** a, char** b);
-void delete(char** a, char** b);
+void delete(char*** a, char*** b);
 
 int main() {
     char** A = (char**) malloc(sizeof(char) * X1);
