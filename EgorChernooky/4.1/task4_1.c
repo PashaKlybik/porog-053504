@@ -90,7 +90,7 @@ void input(char** a, char** b) {
     }
 
     printf("\nFill the second array (length - 3).\n");
-    for (int i = 0; i < X1; ++i) {
+    for (int i = 0; i < X2; ++i) {
         char ch = 0;
         int j = 0;
         printf("Enter word: ");
