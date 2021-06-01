@@ -1,0 +1,32 @@
+1. What is C?
+a) Programming language
+b) Sound
+c) Letter
+d) Something
+@@
+2. Do you like C?
+a) Yes
+b) No
+c) C++ is better version of C
+d) .NET is the best version of anything
+@@
+3. SHould I use Visual Studio to write C programs?
+a) Yes
+b) No
+c) Just yes
+d) Just no
+@@
+4. How many keywords are in C89?
+a) 89
+b) 64
+c) 32
+d) 86
+@@
+5. I'm out of questions, so just choose b
+a) There is 1 liar
+b) Choose d
+c) There are 3 liars
+d) Choose me
+@@
+##
+aadcb
