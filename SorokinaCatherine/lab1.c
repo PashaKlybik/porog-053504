@@ -4,16 +4,18 @@ void toRoman(int number);
 
 int main() {
 
-    int number, cont = 1;
+    int number, cont = 1, var;
 
     while (cont) {
         printf("Введите ваше число: ");
-        scanf("%d", &number);
-        puts("Ваше число: ");
-        toRoman(number);
-
-        printf("\nЕсли хотите выйти, нажмите 0\t");
-        scanf("%d", &cont);
+        var = scanf("%d", &number);
+        if (var==1) {
+            puts("Ваше число: ");
+            toRoman(number);
+            printf("\nЕсли хотите выйти, нажмите 0\t");
+            scanf("%d", &cont);
+        } else
+            fflush(stdin);
     }
     return 0;
 }
