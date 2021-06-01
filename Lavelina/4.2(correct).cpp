@@ -42,31 +42,23 @@ char** Filling(char* str, int n, char** words, int position)
 //сортируем двумерный массив слов с помощью таблицы аски
 char** Sort(char** words, char* temp, int wordCount)
 {
-	for (int i = 0; i < wordCount; i++) {
-		for (int j = 0; j < wordCount - 1; j++) {
-			if ((int)(words[j][0]) > (int)(words[j + 1][0]))
+	char fir[10];
+	char sec[10];
+	bool check = true;
+	int k = 0;
+	
+	
+	for (int i = 0; i < wordCount-1; i++) 
+	{
+		for (int j = i + 1; j < wordCount; j++)
+		{
+			if (strcmp(words[i], words[j]) > 0)
 			{
-				temp = words[j];
-				words[j] = words[j + 1];
-				words[j + 1] = temp;
-			}
-			else if ((int)(words[j][0]) == (int)(words[j + 1][0]))
-			{
-				if ((int)words[j][1] > (int)(words)[j + 1][1])
-				{
-					temp = words[j];
-					words[j] = words[j + 1];
-					words[j + 1] = temp;
-				}
-			}
-			else if ((int)(words[j][1]) == (int)(words[j + 1][1]))
-			{
-				if ((int)words[j][2] > (int)(words)[j + 1][2])
-				{
-					temp = words[j];
-					words[j] = words[j + 1];
-					words[j + 1] = temp;
-				}
+
+				temp = words[i];
+				words[i] = words[j];
+				words[j] = temp;
+
 			}
 		}
 	}
