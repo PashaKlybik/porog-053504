@@ -12,7 +12,6 @@ struct node *node(int data, struct node *next, struct node *prev);
 struct list{
     struct node *head;
     struct node *tail;
-    // list is looped, we don't need tail because it is always before head :)
     int size;
 };
 struct list *list();
