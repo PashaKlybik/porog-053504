@@ -1,4 +1,4 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -41,8 +41,7 @@ void readIzFile(struct account** First, struct account** Last)   // считыв
 }
 int vvInt()               // ввод int
 {
-    int n1;
-    int k = 0;
+    int n1; int k = 0;
     do
     {
         n1 = scanf("%d", &k);                                                 // ввод размера матрицы
@@ -53,11 +52,9 @@ int vvInt()               // ввод int
         }
     } while (!n1 && k < 0);
     return k;
-
 }
 void getstr(char* str, int k)
 {
-    // char *str = (char*) calloc(k,sizeof(char));
     if (!str) return;   // передан указатель на невыделенную под строку память
     int i = 0;
     fflush(stdin);
@@ -99,7 +96,6 @@ void depNew(struct account* Acc)
     int befSum = StartMoney;
     if (!f)                        // если такого файла не существует
     {
-        //fclose(f);
         f = fopen(TranzFile, "w+");   // создаем новый
         befSum = befSum + (Acc->ballance);
         fprintf(f, "%d\n", befSum);
@@ -195,22 +191,21 @@ void reDep(struct account** Acc)
             printf("Ой! У вас нет столько! :(\n");
             break;
         }
-
         else
-            break;
+            (*Acc)->ballance = (*Acc)->ballance - sum;
+        FILE* f = fopen(TranzFile, "r+");
+        int befSum;
+        fscanf(f, "%d", &befSum);
+        rewind(f);
+        befSum = befSum - sum;
+        fprintf(f, "%d\n", befSum);              // меняем баланс в банкомате
+        fclose(f);
+        fopen(TranzFile, "a+");   // дописываем в историю
+        fprintf(f, "%s %s %d\n", (*Acc)->log, " снятие ", sum);
+        printf("Вы сняли с баланса: %d. Остаток: %d\n", sum, (*Acc)->ballance);
+        fclose(f);
+        break;
     } while (1);
-    (*Acc)->ballance = (*Acc)->ballance - sum;
-    FILE* f = fopen(TranzFile, "r+");
-    int befSum;
-    fscanf(f, "%d", &befSum);
-    rewind(f);
-    befSum = befSum - sum;
-    fprintf(f, "%d\n", befSum);              // меняем баланс в банкомате
-    fclose(f);
-    fopen(TranzFile, "a+");   // дописываем в историю
-    fprintf(f, "%s %s %d\n", (*Acc)->log, " снятие ", sum);
-    printf("Вы сняли с баланса: %d. Остаток: %d\n", sum, (*Acc)->ballance);
-    fclose(f);
 }     // функция снятия наличных
 void tranzit(struct account* head, struct account** Acc)
 {
