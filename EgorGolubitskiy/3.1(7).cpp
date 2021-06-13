@@ -25,9 +25,9 @@ int main()
 
     arr = (int*)malloc(str * col * sizeof(int));
 
-    for (x = 0; x < str; x++)  // цикл по строкам
+    for (x = 0; x < str; x++)
     {
-        for (y = 0; y < col; y++)  // цикл по столбцам
+        for (y = 0; y < col; y++)
         {
             *(arr + x * str + y) = EMPTY;
         }
@@ -68,9 +68,9 @@ int main()
         }
     }
 
-    for (x = 0; x < str; x++)  // цикл по строкам
+    for (x = 0; x < str; x++)
     {
-        for (y = 0; y < col; y++)  // цикл по столбцам
+        for (y = 0; y < col; y++)
         {
 
             if (*(arr + x * str + y) == EMPTY)
@@ -89,9 +89,9 @@ int main()
         }
     }
 
-    for (x = 0; x < str; x++)  // цикл по строкам
+    for (x = 0; x < str; x++)
     {
-        for (y = 0; y < col; y++)  // цикл по столбцам
+        for (y = 0; y < col; y++)
         {
             if (*(arr + x * str + y) == EMPTY)
             {
@@ -99,7 +99,7 @@ int main()
             }
             else
             {
-                printf("%5d ", *(arr + x * str + y)); // 5 знакомест под элемент массива
+                printf("%5d ", *(arr + x * str + y));
             }
         }
         printf("\n");
