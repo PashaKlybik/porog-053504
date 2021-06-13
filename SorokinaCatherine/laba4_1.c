@@ -56,8 +56,7 @@ int main() {
                     minn=min;
             }
         }
-        char* word = (char*) malloc(30* sizeof(char));
-        word = sentence[maxId];
+        char* word = sentence[maxId];
         sentence[maxId]=sentence[minId];
         sentence[minId]=word;
         if(isupper(sentence[minId][0])){
@@ -74,6 +73,10 @@ int main() {
             else printf(" %s",sentence[i]);
         }
         printf(" ");
+
+        for(int i = 0; i<number; i++){
+            free(sentence[i]);
+        }
     }
 
     printf("\nThe size of the smallest word: %d", minn);

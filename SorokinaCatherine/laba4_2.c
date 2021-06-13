@@ -35,6 +35,7 @@ int main() {
         if (isEndPunctMark(symbol) || isPunctMark(symbol) || symbol==' ' || symbol=='\n') {
             printf("%c",symbol);
         }
+        free(word);
     }
 
     return 0;
@@ -83,6 +84,7 @@ void replace(char* w){
 
         if(!islower(first))
             w[0]=(char)toupper(w[0]);
+
     }
 
     fclose(f);
