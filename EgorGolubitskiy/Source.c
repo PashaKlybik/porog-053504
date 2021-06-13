@@ -2,136 +2,190 @@
 #include <malloc.h>
 
 struct Node {
-    int data;
-    struct Node* next;
-    struct Node* prev;
+	int data;
+	struct Node* next;
+	struct Node* prev;
 };
-void push(struct Node** head_ref, int new_data);
-void insertAfter(struct Node* prev_node, int new_data);
 void append(struct Node** head_ref, int new_data);
+void push(struct Node** head_ref, int new_data);
 void printList(struct Node* node);
 
-void from_list_to_tree(struct node* tree, struct list* lst);
-
-struct node {
-    int data;
-    struct node* left;
-    struct node* right;
+struct nodeTree {
+	int key;
+	struct nodeTree* left, * right;
 };
+struct nodeTree* newNode(int item);
+void inorder(struct nodeTree* root);
+void preorder(struct nodeTree* root);
+void postorder(struct nodeTree* root);
+struct nodeTree* insert(struct nodeTree* node, int key);
 
-struct node* newNode(int data);
-
+struct nodeTree* from_list_to_tree(struct nodeTree* tree, struct Node* lst);
+void show(struct nodeTree* tree);
 
 void main(void)
 {
-    int n;
-    printf("Enter n: ");
-    scanf_s("%d", &n);
+	int n, d = 0;
 
-    struct list* lst = NULL;
-    struct node* root;
-    root = rand() % 100;
+	printf("Enter n: ");
+	scanf_s("%d", &n);
 
-    for (int i = 0; i < n * 5; i++)
-    {
-        int number = rand() % 100;
+	struct Node* lst = NULL;
+	struct nodeTree* root = NULL;
 
-        push(&lst, number);
-    }
-    printList(lst);
-    
+	for (int i = 0; i < n; i++)
+	{
+		int number = rand() % 100;
+		push(&lst, number);
+	}
+	printf("List: ");
+	printList(lst);
+	printf("\n\n");
 
-    return 0;
+	root = from_list_to_tree(root, lst);
+	printf("Preorder: ");
+	preorder(root);
+	printf("\nInorder: ");
+	inorder(root);
+	printf("\nPostorder: ");
+	postorder(root);
+	printf("\n\n");
+	show(root);
+
+	free(lst);
+	free(root);
+	return;
 }
-
-
 
 void push(struct Node** head_ref, int new_data)
 {
-    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
 
-    new_node->data = new_data;
+	struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
 
-    new_node->next = (*head_ref);
-    new_node->prev = NULL;
 
-    if ((*head_ref) != NULL)
-        (*head_ref)->prev = new_node;
+	new_node->data = new_data;
 
-    (*head_ref) = new_node;
-}
-void insertAfter(struct Node* prev_node, int new_data)
-{
-    if (prev_node == NULL) {
-        printf("the given previous node cannot be NULL");
-        return;
-    }
 
-    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+	new_node->next = (*head_ref);
+	new_node->prev = NULL;
 
-    new_node->data = new_data;
- 
-    new_node->next = prev_node->next;
-    prev_node->next = new_node;
-    new_node->prev = prev_node;
 
-    if (new_node->next != NULL)
-        new_node->next->prev = new_node;
+	if ((*head_ref) != NULL)
+		(*head_ref)->prev = new_node;
+
+
+	(*head_ref) = new_node;
 }
 void append(struct Node** head_ref, int new_data)
 {
-    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+	struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
 
-    struct Node* last = *head_ref;
-    new_node->data = new_data;
+	struct Node* last = *head_ref;
+	new_node->data = new_data;
 
-    new_node->next = NULL;
-    if (*head_ref == NULL) {
-        new_node->prev = NULL;
-        *head_ref = new_node;
-        return;
-    }
 
-    while (last->next != NULL)
-        last = last->next;
+	if (*head_ref == NULL) {
+		new_node->prev = NULL;
+		*head_ref = new_node;
+		return;
+	}
 
-    last->next = new_node;
-    new_node->prev = last;
+	while (last->next != NULL)
+		last = last->next;
 
-    return;
+	last->next = new_node;
+	new_node->prev = last;
+
+	return;
 }
 void printList(struct Node* node)
 {
-    struct Node* last;
-    while (node != NULL) {
-        printf("%d\n", node->data);
-        last = node;
-        node = node->next;
-    }
+	struct Node* last;
+	while (node != NULL) {
+		printf(" %d ", node->data);
+		last = node;
+		node = node->next;
+	}
 }
 
-
-struct node* newNode(int data)
+struct nodeTree* newNode(int item)
 {
-    struct node* node = (struct node*)malloc(sizeof(struct node));
+	struct nodeTree* temp
+		= (struct nodeTree*)malloc(sizeof(struct nodeTree));
+	temp->key = item;
+	temp->left = temp->right = NULL;
+	return temp;
+}
+void inorder(struct nodeTree* root)
+{
+	if (root != NULL) {
+		inorder(root->left);
+		printf(" %d ", root->key);
+		inorder(root->right);
+	}
+}
+void preorder(struct nodeTree* root)
+{
+	if (root != NULL) {
+		printf(" %d ", root->key);
+		preorder(root->left);
+		preorder(root->right);
+	}
+}
+void postorder(struct nodeTree* root)
+{
+	if (root != NULL) {
+		postorder(root->left);
+		postorder(root->right);
+		printf(" %d ", root->key);
+	}
+}
+struct nodeTree* insert(struct nodeTree* node, int key)
+{
+	if (node == NULL)
+		return newNode(key);
 
-    node->data = data;
+	if (key < node->key)
+		node->left = insert(node->left, key);
+	else if (key > node->key)
+		node->right = insert(node->right, key);
 
-    node->left = NULL;
-    node->right = NULL;
-    return (node);
+	return node;
 }
 
-void from_list_to_tree(struct node* tree, struct Node* node)
+struct nodeTree* from_list_to_tree(struct nodeTree* tree, struct Node* lst)
 {
-    struct Node* last;
-    while (node != NULL) {
-        if (tree->data < node->data) {
-            tree->left;
-        }
-        else
-            newNode(tree->right, node);
-        last = node;
-        node = node->next;
-    }
+	struct Node* last;
+	while (lst != NULL) {
+		tree = insert(tree, lst->data);
+		last = lst;
+		lst = lst->next;
+	}
+	return(tree);
+}
+
+int find_count(struct nodeTree* tree)
+{
+	int count = 0;
+
+	if (tree != NULL)
+	{
+		count++;
+		count += find_count(tree->left);
+		count += find_count(tree->right);
+	}
+	else
+		return count;
+}
+void show(struct nodeTree* tree)
+{
+	int count_left = find_count(tree->left), count_right = find_count(tree->right);
+
+	printf("Bigest branch: ");
+	if (count_left > count_right)
+		preorder(tree->left);
+	else if (count_left < count_right)
+		preorder(tree->right);
+	else
+		printf("The branches are equal.");
 }
