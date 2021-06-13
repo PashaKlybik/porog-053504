@@ -43,10 +43,9 @@ int PrintMenu() {
 		printf("5. Delete my tour\n");
 		printf("6. Calculate a company's profit\n");
 		printf("7. Exit and save the DB file\n");
-		printf("8. Exit and dont save the DB file\n");
 		printf("---------------------------------------\n");
 		printf("Choose your position: ");
-	} while (!scanf("%d", &nextStep) && clearInput() || checkNumberInput(nextStep, 8));
+	} while (!scanf("%d", &nextStep) && clearInput() || checkNumberInput(nextStep, 7));
 	return nextStep;
 }
 
@@ -190,13 +189,11 @@ int main(void) {
 		case 7:
 			companys_profit = CalculateProfit(list);
 			break;
-		case 8: 
-			break;
 		default: 
 			break;
 		}
 
-	} while (!(choose == 7 || choose == 8 || choose == 2));
+	} while (!(choose == 7 || choose == 2));
 
 
 	SaveFile(list);
