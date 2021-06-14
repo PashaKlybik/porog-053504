@@ -1,0 +1,26 @@
+1. When C was founded?
+a) 1996
+b) 1982
+c) 1972
+***
+2. What type of data doesn't exist in C?
+a) integer
+b) double
+c) float
+d) string
+***
+3. Is the output of 'num' correct?
+int num =0;
+printf(num);
+a) Yes, everything is correct
+b) No, because the variable was created incorrectly
+c) No, because the output was created incorrectly
+***
+4. Where the variable was created correctly?
+a) string str="some"
+b) float num=45.5 
+c) int num=45.5f
+d) long num=1;
+***
+keys
+cdcd
