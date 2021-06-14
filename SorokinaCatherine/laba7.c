@@ -59,7 +59,7 @@ int main() {
     fclose(f);
 
     m = menu();
-    while(m!=5) {
+    while(m!=6) {
         switch (m) {
             case 1: {
                 char* faculty;
@@ -77,7 +77,7 @@ int main() {
             }
             case 2: {
                 fflush(stdin);
-                printf("Введите ФИО абитуриента");
+                printf("\nВведите ФИО абитуриента\n");
                 char* name = getString();
                 deleteApplicant(name, FKSiS, FITY, IEF);
                 m = menu();
@@ -105,6 +105,59 @@ int main() {
                 showEnrolled(IEF, 4);
                 m = menu();
                 break;
+            }
+            case 5:{
+                fflush(stdin);
+                int opt;
+                printf("\nВыберите факультет, о котором хотите увидеть информацию"
+                       "\n1 - ФКСиС"
+                       "\n2 - ФИТУ"
+                       "\n3 - ИЭФ\n");
+                scanf("%d",&opt);
+                switch (opt) {
+                    case 1:{
+                        printf("\nКоличество поданных заявлений:");
+                        printf("\n%s: %d", FKSiS[0]->shortSpecialtyName,FKSiS[0]->size);
+                        printf("\t%s: %d", FKSiS[1]->shortSpecialtyName,FKSiS[1]->size);
+                        printf("\t%s: %d", FKSiS[2]->shortSpecialtyName,FKSiS[2]->size);
+                        printf("\t%s: %d", FKSiS[3]->shortSpecialtyName,FKSiS[3]->size);
+                        printf("\n\nПроходные баллы:");
+                        showEntryPoints(FKSiS, 4);
+                        printf("\n\nСписки поступивших: ");
+                        showEnrolled(FKSiS, 4);
+                        break;
+                    }
+                    case 2:{
+                        printf("\nКоличество поданных заявлений:");
+                        printf("\n%s: %d", FITY[0]->shortSpecialtyName,FITY[0]->size);
+                        printf("\t%s: %d", FITY[1]->shortSpecialtyName,FITY[1]->size);
+                        printf("\t%s: %d", FITY[2]->shortSpecialtyName,FITY[2]->size);
+                        printf("\t%s: %d", FITY[3]->shortSpecialtyName,FITY[3]->size);
+                        printf("\t%s: %d", FITY[4]->shortSpecialtyName,FITY[4]->size);
+                        printf("\n\nПроходные баллы:");
+                        showEntryPoints(FITY, 5);
+                        printf("\n\nСписки поступивших: ");
+                        showEnrolled(FITY, 5);
+                        break;
+                    }
+                    case 3:{
+                        printf("\nКоличество поданных заявлений:");
+                        printf("\n%s: %d", IEF[0]->shortSpecialtyName,IEF[0]->size);
+                        printf("\t%s: %d", IEF[1]->shortSpecialtyName,IEF[1]->size);
+                        printf("\t%s: %d", IEF[2]->shortSpecialtyName,IEF[2]->size);
+                        printf("\t%s: %d", IEF[3]->shortSpecialtyName,IEF[3]->size);
+                        printf("\n\nПроходные баллы:");
+                        showEntryPoints(IEF, 4);
+                        printf("\n\nСписки поступивших: ");
+                        showEnrolled(IEF, 4);
+                        break;
+                    }
+                    default: {
+                        printf("\nВы не выбрали факультет, попробуйте снова.");
+                        break;
+                    }
+                }
+                m=menu();
             }
             default: break;
         }
@@ -219,6 +272,7 @@ int entryPoints(List* spec){
 
 void showEnrolled(List* faculty[], int size){
     for (int i = 0; i < size; i++) {
+        printf("\n\n%s:",faculty[i]->specialtyName);
         Node *tmp = faculty[i]->head;
         for (int j = 0; j < faculty[i]->size; j++) {
             int score = tmp->data->physics + tmp->data->language + tmp->data->certificate + tmp->data->maths;
@@ -258,40 +312,47 @@ void addApplicant(Applicant* p, char* faculty, char* specialty, List* FKSiS[4],L
 void deleteApplicant(char* name, List* FKSiS[4],List* FITY[5],List* IEF[4]){
     Node* tmp;
     for(int i=0; i<4; i++){
-        FKSiS[i]=(List*) malloc(sizeof(List));
         tmp=FKSiS[i]->head;
         for(int j = 0; j<FKSiS[i]->size && tmp!=NULL;j++){
-            if(strcmp(name,tmp->data->fullName)==0)
-                removeThis(FKSiS[i],j);
+            if(strcmp(name,tmp->data->fullName)==0) {
+                removeThis(FKSiS[i], j);
+                return;
+            }
+            tmp=tmp->next;
         }
     }
     for(int i=0; i<5; i++){
-        FITY[i]=(List*) malloc(sizeof(List));
         tmp=FITY[i]->head;
         for(int j = 0; j<FITY[i]->size && tmp!=NULL;j++){
-            if(strcmp(name,tmp->data->fullName)==0)
-                removeThis(FITY[i],j);
+            if(strcmp(name,tmp->data->fullName)==0) {
+                removeThis(FITY[i], j);
+                return;
+            }
+            tmp=tmp->next;
         }
     }
     for(int i=0; i<4; i++){
-        IEF[i]=(List*) malloc(sizeof(List));
         tmp=IEF[i]->head;
         for(int j = 0; j<IEF[i]->size && tmp!=NULL;j++){
-            if(strcmp(name,tmp->data->fullName)==0)
-                removeThis(IEF[i],j);
+            if(strcmp(name,tmp->data->fullName)==0) {
+                removeThis(IEF[i], j);
+                return;
+            }
+            tmp=tmp->next;
         }
     }
 }
 
 int menu(){
     int ch = 0, var = 0;
-    printf("\nВыберите, что вы хотите сделать:");
+    printf("\n\nВыберите, что вы хотите сделать:");
     printf("\n1 - подать документы в БГУИР"
            "\n2 - забрать документы"
            "\n3 - узнать проходные баллы"
            "\n4 - увидеть списки поступивших"
-           "\n5 - выйти\n");
-    while(var!=1 && (ch>5 || ch<1)) {
+           "\n5 - увидеть всю информацию об определенном факультете"
+           "\n6 - выйти\n");
+    while(var!=1 && (ch>6 || ch<1)) {
         var = scanf("%d", &ch);
         if(var!=1)
             fflush(stdin);
@@ -371,6 +432,7 @@ void getInfo(Applicant* ap){
 }
 
 void setInfo(Applicant* ap){
+    int var, ch;
     fflush(stdin);
     printf("\nВведите информацию об абитуриенте:");
     printf("\nФИО: ");
@@ -381,14 +443,37 @@ void setInfo(Applicant* ap){
     ap->address=getString();
     printf("Учебное заведение: ");
     ap->school=getString();
-    printf("Балл из аттестата: ");
-    scanf("%d",&(ap->certificate));
-    printf("Балл за ЦТ по языку: ");
-    scanf("%d",&(ap->language));
-    printf("Балл за ЦТ по математике: ");
-    scanf("%d",&(ap->maths));
-    printf("Балл за ЦТ по физике: ");
-    scanf("%d",&(ap->physics));
+    while(var!=1) {
+        printf("Балл аттестата: ");
+        var = scanf("%d", &ch);
+        if(var!=1)
+            fflush(stdin);
+    }
+    var = 0;
+    ap->certificate=ch;
+    while(var!=1) {
+        printf("Балл за ЦТ по языку: ");
+        var = scanf("%d", &ch);
+        if(var!=1)
+            fflush(stdin);
+    }
+    var = 0;
+    ap->language=ch;
+    while(var!=1) {
+        printf("Балл за ЦТ по математике: ");
+        var = scanf("%d", &ch);
+        if(var!=1)
+            fflush(stdin);
+    }
+    var = 0;
+    ap->maths=ch;
+    while(var!=1) {
+        printf("Балл за ЦТ по физике: ");
+        var = scanf("%d", &ch);
+        if(var!=1)
+            fflush(stdin);
+    }
+    ap->physics=ch;
 }
 
 char* getString(){
