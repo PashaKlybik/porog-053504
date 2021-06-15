@@ -11,6 +11,6 @@ int main()
 	int n = (k - 1) / 20 + 1;
 	int ch = ((k - 1) % 20) / 2;
 	int s =(k % 2)* n + ((k + 1) % 2) * ch;
-	printf("%s");
+	printf("%d", s);
 	return 0;
 }
