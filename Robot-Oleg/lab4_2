@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdbool.h>
+
+#define N 256
+
+bool isLetter(char letter) {
+    if ((90 >= letter && letter >= 65) || (97 <= letter && letter <= 122))  return true;
+    return false;
+}
+
+
+int main() {
+    char buffer[N];
+    long int sum = 0;
+    int word_count = 0;
+    char *p;
+    FILE *fp;
+
+    fp = fopen("text.txt", "r");
+    if (!fp) exit(1);
+    while (fgets(buffer, N, fp) != NULL) {
+        p = buffer;
+        while (*p) {
+            if ( isdigit(*p) || ( (*p=='-'||*p=='+') && isdigit(*(p+1)) )) {
+                long val = strtol(p, &p, 10);
+                sum += val;
+            }
+            else {
+                if ((*p == ' ' || *p == '\n') && isLetter(*(p-1))) word_count++;
+                p++;
+            }
+        }
+    }
+
+    if (word_count == sum) printf("word count(%d) = sum of numbers(%ld)", word_count, sum);
+    else printf("word count(%d) != sum of numbers(%ld)", word_count, sum);
+    fclose(fp);
+    return 0;
+}
+
