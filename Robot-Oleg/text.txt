@@ -1,3 +1,29 @@
-bla
-hello world   1  2  3 4
-0 bla bla bla bla bla bla blaaaaa
+
+
+4 3
+101
+100
+110
+111
+
+'Greece'
+Mykonos->Sntorini
+15.06
+30.06
+9
+-Vany,1,3480
+-Vladimir,2,3400
+-Petr,3,3620
+3400
+Breakfast,Lunch,Dinner,Transfer,Guide,Hotels
+Quad bike ride-70,Saqqara ride-100,Bungee jump-120,Hydrocycle ride-20,Air ballon fly-60
+
+'USA'
+New York->Los Angleles->Chicago
+17.06
+05.07
+13
+-Andrey,1,4330
+4200
+Breakfast,Lunch,Dinner,Transfer,Guide,Hotels,Yacht cruise
+Air ballon fly-70,Quad bike ride-30,Parachute jump-90,Hydrocycle ride-20,Night club-20
