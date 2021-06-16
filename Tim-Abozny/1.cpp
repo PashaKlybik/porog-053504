@@ -44,7 +44,7 @@ int main()
 	}
 	else printf("Incorrect number!\n");
 
-
+ 
 	getchar();
 	return 0;
 }
