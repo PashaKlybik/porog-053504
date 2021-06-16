@@ -1,3 +1,10 @@
+
+4 3
+101
+100
+110
+111
+
 'Greece'
 Mykonos->Sntorini
 15.06
@@ -19,3 +26,4 @@ New York->Los Angleles->Chicago
 4200
 Breakfast,Lunch,Dinner,Transfer,Guide,Hotels,Yacht cruise
 Air ballon fly-70,Quad bike ride-30,Parachute jump-90,Hydrocycle ride-20,Night club-20
+
